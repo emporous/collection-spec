@@ -1,0 +1,17 @@
+# Build artifacts.
+/bin/
+
+# Test artifacts.
+coverage.out
+sha256sum.txt
+**/test-output
+
+# Local vendor. Remove when ready to vendor dependencies.
+/vendor/
+
+# Local
+.idea
+tags
+*.swp
+.vscode
+dist
