@@ -4,18 +4,20 @@ import (
 	"encoding/json"
 )
 
-// This file contains the UOR Collection core attributes for UOR descriptors.
-
-// Core schema define the required attributes for a collection manifests.
-type Core struct {
+// ManifestAttributes schema defines the required attributes for a collection manifests.
+type ManifestAttributes struct {
 	// RegistryHint will allow registries to be
 	// add to a user search domain in a discovered zone
-	RegistryHint string      `json:"registryHint"`
-	Components   []Component `json:"components"`
+	RegistryHint string `json:"registryHint"`
+}
+
+// DescriptorAttributes schema defines the required attributes for a collection descriptor.
+type DescriptorAttributes struct {
+	Component `json:",inline"`
 }
 
 // Component schema defines information to create a component list.
-// Based on Anchore Syft Package spec
+// Based on Anchore Syft Package spec.
 type Component struct {
 	ID        string   `json:"id"`
 	Name      string   `json:"name"`
@@ -30,6 +32,12 @@ type Component struct {
 	// Package URL
 	PURL               string          `json:"purl"`
 	AdditionalMetadata json.RawMessage `json:",inline"`
+}
+
+// SchemaAttributes are the required attributes for a schema descriptor.
+type SchemaAttributes struct {
+	ID          string `json:"id"`
+	Description string `json:"description"`
 }
 
 // Platform describes the platform which the artifact can be used on.
@@ -52,10 +60,4 @@ type Platform struct {
 	// Variant is an optional field specifying a variant of the CPU, for
 	// example `v7` to specify ARMv7 when architecture is `arm`.
 	Variant string `json:"variant,omitempty"`
-}
-
-// SchemaAttributes are the required attributes for a schema descriptor.
-type SchemaAttributes struct {
-	ID          string `json:"id"`
-	Description string `json:"description"`
 }
