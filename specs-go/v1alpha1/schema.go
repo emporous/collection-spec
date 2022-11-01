@@ -7,13 +7,13 @@ import (
 // ManifestAttributes schema defines the required attributes for a collection manifests.
 type ManifestAttributes struct {
 	// RegistryHint will allow registries to be
-	// add to a user search domain in a discovered zone
+	// added to a user search domain in a discovered zone
 	RegistryHint string `json:"registryHint"`
 }
 
 // DescriptorAttributes schema defines the required attributes for a collection descriptor.
 type DescriptorAttributes struct {
-	Component `json:",inline"`
+	Component Component `json:"component""`
 }
 
 // Component schema defines information to create a component list.
@@ -31,13 +31,13 @@ type Component struct {
 	CPEs []string `json:"cpes"`
 	// Package URL
 	PURL               string          `json:"purl"`
-	AdditionalMetadata json.RawMessage `json:",inline"`
+	AdditionalMetadata json.RawMessage `json:"additional,omitempty"`
 }
 
 // SchemaAttributes are the required attributes for a schema descriptor.
 type SchemaAttributes struct {
 	ID          string `json:"id"`
-	Description string `json:"description"`
+	Description string `json:"description,omitempty"`
 }
 
 // Platform describes the platform which the artifact can be used on.

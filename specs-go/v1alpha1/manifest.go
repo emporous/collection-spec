@@ -20,7 +20,7 @@ type Manifest struct {
 	// is dependent on or relates to.
 	// If the descriptor only contains attributes, the client should attempt to resolve
 	// attributes to descriptor using the attributes API.
-	Links []*Descriptor `json:"links,omitempty"`
+	Links []Descriptor `json:"links,omitempty"`
 
 	// Annotations contains arbitrary metadata for the artifact manifest.
 	Annotations map[string]string `json:"annotations,omitempty"`
