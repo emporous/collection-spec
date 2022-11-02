@@ -13,7 +13,7 @@ type ManifestAttributes struct {
 
 // DescriptorAttributes schema defines the required attributes for a collection descriptor.
 type DescriptorAttributes struct {
-	Component Component `json:"component""`
+	Component `json:",inline"`
 }
 
 // Component schema defines information to create a component list.
