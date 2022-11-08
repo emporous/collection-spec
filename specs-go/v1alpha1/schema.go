@@ -30,8 +30,8 @@ type Component struct {
 	// Common Platform Enumeration
 	CPEs []string `json:"cpes"`
 	// Package URL
-	PURL               string          `json:"purl"`
-	AdditionalMetadata json.RawMessage `json:"additional,omitempty"`
+	PURL               string                     `json:"purl"`
+	AdditionalMetadata map[string]json.RawMessage `json:"additional,omitempty"`
 }
 
 // SchemaAttributes are the required attributes for a schema descriptor.
