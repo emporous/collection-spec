@@ -4,11 +4,14 @@ import (
 	"encoding/json"
 )
 
-// ManifestAttributes schema defines the required attributes for a collection manifests.
+// ManifestAttributes schema defines the required attributes for index manifest references..
 type ManifestAttributes struct {
 	// RegistryHint will allow registries to be
 	// added to a user search domain in a discovered zone
 	RegistryHint string `json:"registryHint"`
+	// NamespaceHint will scope a search to a specific namespace.
+	NamespaceHint string `json:"namespaceHint"`
+	Transitive    bool   `json:"transitive"`
 }
 
 // DescriptorAttributes schema defines the required attributes for a collection descriptor.
