@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 )
 
-// ManifestAttributes schema defines the required attributes for index manifest references..
-type ManifestAttributes struct {
+// LinkAttributes schema defines the required attributes for index manifest link references.
+type LinkAttributes struct {
 	// RegistryHint will allow registries to be
 	// added to a user search domain in a discovered zone
 	RegistryHint string `json:"registryHint"`
