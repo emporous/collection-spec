@@ -64,3 +64,31 @@ type Platform struct {
 	// example `v7` to specify ARMv7 when architecture is `arm`.
 	Variant string `json:"variant,omitempty"`
 }
+
+// File is a schema that sets file level information
+type File struct {
+	// Permission configures the file permissions
+	Permissions uint32 `json:"permissions"`
+	// User ID
+	UID int `json:"uid"`
+	// Group ID
+	GID int `json:"gid"`
+}
+
+// UnmarshalJSON sets custom unmarshalling logic to File.
+// In this case it sets the default UID and GID to invalid
+// ID numbers to differentiate between values intentionally set at 0.
+func (f *File) UnmarshalJSON(data []byte) error {
+	type fileAlias File
+	test := &fileAlias{
+		UID: -1,
+		GID: -1,
+	}
+
+	err := json.Unmarshal(data, test)
+	if err != nil {
+		return err
+	}
+	*f = File(*test)
+	return nil
+}
